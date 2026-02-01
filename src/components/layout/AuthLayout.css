@@ -1,0 +1,217 @@
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-layout__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.auth-layout__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    #8b5cf6 50%,
+    #ec4899 100%
+  );
+  opacity: 0.1;
+}
+
+.auth-layout__pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--color-border) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
+
+.auth-layout__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: var(--space-4);
+}
+
+.auth-layout__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.auth-layout__header {
+  text-align: center;
+}
+
+.auth-layout__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.auth-layout__logo svg {
+  width: 48px;
+  height: 48px;
+}
+
+.auth-layout__logo-text {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-layout__tagline {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+}
+
+.auth-layout__card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-xl);
+}
+
+.auth-layout__footer {
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+}
+
+/* Auth Form Styles */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.auth-form__header {
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.auth-form__title {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.auth-form__subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+.auth-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.auth-form__error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-danger-light);
+  border-radius: var(--radius-md);
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+}
+
+.auth-form__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+}
+
+.auth-form__divider::before,
+.auth-form__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.auth-form__footer {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.auth-form__footer a {
+  font-weight: 500;
+}
+
+.auth-form__forgot {
+  text-align: right;
+  margin-top: calc(var(--space-2) * -1);
+}
+
+.auth-form__forgot a {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.auth-form__forgot a:hover {
+  color: var(--color-primary);
+}
+
+/* Password Input with Toggle */
+.password-input {
+  position: relative;
+}
+
+.password-input__toggle {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-tertiary);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.password-input__toggle:hover {
+  color: var(--color-text);
+  background: var(--color-bg-tertiary);
+}
+
+.password-input .form-input {
+  padding-right: var(--space-10);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-layout__card {
+    padding: var(--space-6);
+  }
+  
+  .auth-layout__logo svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .auth-layout__logo-text {
+    font-size: var(--text-xl);
+  }
+}

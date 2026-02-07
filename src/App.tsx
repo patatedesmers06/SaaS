@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthStore } from '@stores/authStore'
 
@@ -29,9 +30,10 @@ import Reports from '@pages/admin/Reports'
 
 // Protected Route Component
 function ProtectedRoute({ children, allowedRoles }: { children: React.ReactNode, allowedRoles?: string[] }) {
-  const { user, isLoading } = useAuthStore()
+  const { user, isLoading, isInitialized } = useAuthStore()
 
-  if (isLoading) {
+  // Only show loading if we're still initializing for the first time
+  if (!isInitialized || isLoading) {
     return (
       <div className="loading-screen">
         <div className="spinner"></div>
@@ -52,6 +54,15 @@ function ProtectedRoute({ children, allowedRoles }: { children: React.ReactNode,
 }
 
 function App() {
+  const { initialize, isInitialized } = useAuthStore()
+
+  // Initialize auth on app mount
+  useEffect(() => {
+    if (!isInitialized) {
+      initialize()
+    }
+  }, [initialize, isInitialized])
+
   return (
     <Routes>
       {/* Auth Routes */}
